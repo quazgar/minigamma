@@ -1,0 +1,31 @@
+***************************
+** Include models
+.include bc547c.cir
+.include bc557.cir
+.include 1N4148.cir
+
+******************
+** Include netlist
+** create the netlist with:
+** gnetlist -g spice-sdb -o minigamma.net minigamma.sch
+
+*.include test_r.cir
+*.include test_rc.cir
+*.include test_pnp.cir
+.include minigamma.net
+
+*************************************
+* Let's try a transient simulation...
+.TRAN 0.5n 5u
+
+******************************************
+* Call with: ngspice -b -r results.raw minigamma.main.cir
+* The raw results can then be viewed with e.g. gwave
+.control
+  run
+  *hardcopy test.ps V(vin) I(Vin) i(Vin9)
+  *hardcopy test.ps I(Vin) * -800  I(Vin9)
+  *save I(Vin) i(Vin9)
+.endc
+
+.end

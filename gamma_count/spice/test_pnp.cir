@@ -1,0 +1,19 @@
+* (v9v)-----R1(1000)
+*              |
+*           |<-/(e)
+* (vin)-(b)-|
+*           |\
+*             \----(c)---(-)
+*
+* => tau = 1ms
+
+
+
+Vin vin 0 pulse 10 7 0u 3m 0n 0m ; "rise": 3ms, from 10V to 7V
+Vin9 v9v 0 10
+R1 v9v emit 1000 
+*R2 1 0 100
+*C1 1 0 1u
+Q557_a 0 vin emit BC557
+
+.end
