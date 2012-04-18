@@ -16,16 +16,16 @@
 
 *************************************
 * Let's try a transient simulation...
-.TRAN 0.5n 5u
+.TRAN 1n 20u
 
 ******************************************
 * Call with: ngspice -b -r results.raw minigamma.main.cir
 * The raw results can then be viewed with e.g. gwave
-.control
-  run
-  *hardcopy test.ps V(vin) I(Vin) i(Vin9)
-  *hardcopy test.ps I(Vin) * -800  I(Vin9)
-  *save I(Vin) i(Vin9)
-.endc
+* .control
+*   run
+*   *hardcopy test.ps V(vin) I(Vin) i(Vin9)
+*   *hardcopy test.ps I(Vin) * -800  I(Vin9)
+*   *save I(Vin) i(Vin9)
+* .endc
 
 .end

@@ -6,24 +6,26 @@
 * Documentation at http://www.brorson.com/gEDA/SPICE/   *
 *********************************************************
 *==============  Begin SPICE netlist of main design ============
-R2M2_in t1_b Vcc 2.2Meg  
-V_t2_b 2 t1_c DC 0V
-Rout 0 vout 5Meg  
-R1k5 5 Vcc 1.5k  
-R220k 4 Vcc 220k  
-Q547C_b 5 4 vout BC547C 
-Q547C_a 4 v_c 0 BC547C 
+XLED_b 4 5 1N4148
+V_I_out 5 0 DC 0V
+XLED_a vout 4 1N4148
+Q547C_2 t2_e t1_c t2_c BC547C 
+R_in_denoise vin Vcc 10Meg  
+R1k5 3 Vcc 1.5k  
+R220k t4_b Vcc 220k  
+Q547C_b 3 t4_b vout BC547C 
+Q547C_a t4_b v_c 0 BC547C 
+R_split_b v_c t4_b 2.2Meg  
 V_t1_b 1 t1_b DC 0V
-V_t0_b 3 vin DC 0V
+V_t0_b 2 vin DC 0V
 XD1 0 vin 1N4148
-I_photo vin 0 pulse 0 150u 1u 100n 100n 1u
-Q557_photo 0 3 t1_b BC557 
+I_photo vin 0 pulse 0 15u 1u 100n 100n 1u 1000u
+Q557_photo 0 2 t1_b BC557 
 Vcc Vcc 0 DC 9V
-R_split_a v_c 4 2.2Meg  
-Q557_b t2_c 2 t2_e BC557 
+R_split_a 0 v_c 2.2Meg  
 Q557_a t1_c 1 t1_e BC557 
-C100n_b t2_c v_c 100n  
-C100n_a t2_e 0 100n  
+C100n_b t2_c v_c 2p  
+C100n_a t2_e 0 10p  
 C4u7 0 t1_e 4.7u  
 R100k_b 0 t2_c 100k  
 R2M2 t2_e Vcc 2.2Meg  
